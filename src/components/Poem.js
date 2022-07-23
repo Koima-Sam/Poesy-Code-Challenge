@@ -1,12 +1,12 @@
 import React from "react";
 
-function Poem() {
+function Poem({title,id,content,author}) {
   return (
-    <div>
-      <h3>Title</h3>
-      <p>Content</p>
+    <div id={id}>
+      <h3>{title}</h3>
+      <p>{content}</p>
       <p>
-        <strong>- By Author</strong>
+        <strong>- By Author {author}</strong>
       </p>
       <button>Mark as read</button>
     </div>
