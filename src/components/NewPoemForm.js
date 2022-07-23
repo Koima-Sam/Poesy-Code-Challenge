@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewPoemForm() {
+function NewPoemForm({updatePoems}) {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -20,9 +20,9 @@ function NewPoemForm() {
         },
         body: JSON.stringify(formData),
       })
-        .then((response) => response.json)
+        .then((response) => response.json())
         .then((data) => {
-          // updatePoemRecords()
+          updatePoems(data)
           setFormData({ ...formData, title: "", author: "", content: "" });
         });
     }

@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Poem from "./Poem";
 
-function PoemsContainer() {
-  const [poems, setPoems] = useState([]);
-  //Fetch poems
-  useEffect(() => {
-    fetch("http://localhost:8004/poems")
-      .then((response) => response.json())
-      .then((data) => setPoems(data));
-  }, [poems]);
-
-  const poemItem = poems.map((poem) => {
+function PoemsContainer({poems}) {
+  
+  const poemItem = poems.map((poem, index) => {
     return (
       <Poem
-        key={poem.id}
+        key={index}
         id={poem.id}
         title={poem.title}
         content={poem.content}
