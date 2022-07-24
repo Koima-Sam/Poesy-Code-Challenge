@@ -27,10 +27,10 @@ function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <button onClick={handleHideClick}>Show/hide new poem form</button>
+        <button onClick={handleHideClick}>{show ? 'Hide Form':'Show Form'}</button>
         {show ? <NewPoemForm updatePoems ={updatePoems} /> : null}
       </div>
-      <PoemsContainer poems ={poems}/>
+      <PoemsContainer poems ={poems} setPoems = {setPoems}/>
     </div>
   );
 }

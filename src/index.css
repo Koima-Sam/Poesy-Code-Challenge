@@ -59,3 +59,8 @@ button {
   padding: 0.5em;
   cursor: pointer;
 }
+.btns{
+  display: flex;
+  justify-content: space-between;
+}
+

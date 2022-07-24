@@ -1,7 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Poem({title,id,content,author}) {
-  const[isRead, setRead] = useState(false)
+function Poem({title,id,content,author,read,favourite, handleDelete, handleUpdate}) {
+  function handleClick(){
+    fetch(`http://localhost:8004/poems/${id}`, {
+        method: "DELETE"
+      })
+      .then(response => response.json())
+      .then(() => handleDelete(id))
+  }
+  function handleRead(){
+    console.log(read)
+    fetch(`http://localhost:8004/poems/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          read : !read
+        }),
+      })
+      .then(response => response.json())
+      .then(data => handleUpdate(data,id))
+
+  }
+  function handleFavClick(){
+    fetch(`http://localhost:8004/poems/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          favourite : !favourite
+        }),
+      })
+      .then(response => response.json())
+      .then(data => handleUpdate(data,id))
+  }
+
+  //boolean undefined===false
   return (
     <div id={id}>
       <h3>{title}</h3>
@@ -9,7 +45,11 @@ function Poem({title,id,content,author}) {
       <p>
         <strong>- By Author {author}</strong>
       </p>
-      <button onClick={()=>setRead(!isRead)}>{isRead? "Mark as read":"Mark as unread"}</button>
+      <div className="btns">
+      <button onClick={handleRead}>{read? "Mark as unread":"Mark as read"}</button>
+      <button onClick={handleFavClick}>{!favourite? "Add to Favourites":"Remove from Favourites"}</button>
+      <button onClick={handleClick}>DELETE</button>
+      </div>
     </div>
   );
 }
