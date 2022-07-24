@@ -51,7 +51,7 @@ function PoemsContainer({poems,setPoems}) {
         value={filtered}
         onChange={(e) => setFilter(e.target.value)}
         >
-        <option value="All">Filter poem by category</option>
+        <option value="All">All Poems</option>
         <option value="Favourite">Favourite</option>
         
       </select>
