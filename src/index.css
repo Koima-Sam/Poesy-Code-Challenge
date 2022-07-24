@@ -51,7 +51,7 @@ form.new-poem-form > textarea {
 }
 
 input[type="submit"],
-button {
+button, select {
   font-weight: bold;
   font-size: 1em;
   background: #04e8ff;
@@ -62,5 +62,9 @@ button {
 .btns{
   display: flex;
   justify-content: space-between;
+}
+select{
+  background-color: white;
+  color: darkorange;
 }
 
